@@ -46,7 +46,7 @@ const Sidebar = ({
             Dashboard
           </ListGroup.Item>
 
-          <ListGroup.Item action href="#users" className="bg-dark text-white">
+          <ListGroup.Item action href="/staffs" className="bg-dark text-white">
             <FaUsers className="me-2" />
             Quản lý nhân viên
           </ListGroup.Item>
