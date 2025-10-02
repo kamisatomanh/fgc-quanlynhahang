@@ -1,0 +1,54 @@
+import React from "react";
+import { Button, Card, Col, Container, Row,Form } from "react-bootstrap";
+// import { Form } from "react-router-dom";
+
+const Login = () => {
+  return (
+    <Container
+      fluid
+      className="vh-100 d-flex justify-content-center align-items-center bg-light"
+    >
+      <Row className="w-100">
+        <Col xs={12} sm={8} md={6} lg={4} className="mx-auto">
+          <Card className="shadow">
+            <Card.Body className="p-4">
+              <h3 className="text-center mb-4">🍴 Đăng nhập</h3>
+              <Form>
+                <Form.Group className="mb-3" controlId="formBasicEmail">
+                  <Form.Label>Email</Form.Label>
+                  <Form.Control
+                    type="email"
+                    placeholder="Nhập email"
+                    required
+                  />
+                </Form.Group>
+
+                <Form.Group className="mb-3" controlId="formBasicPassword">
+                  <Form.Label>Mật khẩu</Form.Label>
+                  <Form.Control
+                    type="password"
+                    placeholder="Nhập mật khẩu"
+                    required
+                  />
+                </Form.Group>
+
+                <Button variant="primary" type="submit" className="w-100">
+                  {/* {loading ? <Spinner animation="border" size="sm" /> : "Đăng nhập"} */}
+                  Đăng nhập
+                </Button>
+              </Form>
+              <div className="text-center mt-3">
+                <a href="#">Quên mật khẩu?</a>
+              </div>
+              <div className="text-center mt-3">
+                <a href="/register">Tạo tài khoản</a>
+              </div>
+            </Card.Body>
+          </Card>
+        </Col>
+      </Row>
+    </Container>
+  );
+};
+
+export default Login;
