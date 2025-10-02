@@ -16,9 +16,8 @@ const CustomButton = ({title, type = "primary", onPress}) => {
 
 const styles = StyleSheet.create({
     button: {
-        paddingVertical: 12,
-        paddingHorizontal: 20,
-        borderRadius: 8,
+        paddingVertical: 15,
+        borderRadius: 10,
         alignItems: "center",
         marginTop: 40,
     },
@@ -30,6 +29,7 @@ const styles = StyleSheet.create({
     primaryText: {
         color: Colors.white_500,
         fontWeight: "400",
+        fontSize: 15
     },
 });
 

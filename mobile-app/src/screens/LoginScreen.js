@@ -32,10 +32,13 @@ const LoginScreen = () => {
             <View style={styles.linkForgot}>
                 <CustomLink 
                     label="Quên mật khẩu?"
-                    destination=""
+                    destination="ForgotPassword"
                 />
             </View>
-            <CustomButton title="Đăng nhập" type="primary" onPress={handleLogin} />
+            <CustomButton 
+                title="Đăng nhập" 
+                type="primary" 
+                onPress={handleLogin} />
             <View style={styles.linkRegister}>
                 <Text>Chưa có tài khoản?</Text>
                 <CustomLink
@@ -51,7 +54,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        padding: 20,
+        paddingHorizontal: 20,
         backgroundColor: '#fff'
     },
     header: {
