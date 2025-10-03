@@ -5,13 +5,22 @@ import CustomButton from "../components/CustomButton";
 import CustomInput from "../components/CustomInput";
 import CustomLink from "../components/CustomLink";
 import Checkbox from 'expo-checkbox';
+import { CommonActions, useNavigation } from "@react-navigation/native";
 
 const RegisterScreen = () => {
+    const navigation = useNavigation();
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [accepted, setAccepted] = useState(false);
     const handleRegister = () => {
-        
+        navigation.dispatch(
+            CommonActions.reset({
+                index: 0,
+                routes: [
+                    {name: 'Login'},
+                ],
+            })
+        );
     };
 
     return (
@@ -40,7 +49,6 @@ const RegisterScreen = () => {
                     isPassword={true}
                 />
             </View>
-
             <View style={styles.termWrapper}>
                 <Checkbox
                     style={styles.checkbox}
@@ -48,17 +56,14 @@ const RegisterScreen = () => {
                     onValueChange={setAccepted}
                     color={accepted ? Colors.primary_500 : undefined}
                 />
-                <View style={{flexDirection: 'row'}}>
-                    <Text style={{fontSize: 15}}>Tôi đồng ý với</Text>
-                        <CustomLink
-                            label=" Điều khoản và Bảo mật "
-                            destination=""
-                        />
+                <View style={styles.termTextGroup}> 
+                    <Text style={styles.termText}>Tôi đồng ý với</Text>
+                    <CustomLink
+                        label="Điều khoản & Bảo mật"
+                        destination="TermsAndConditions"
+                    />
                 </View>
-                
             </View>
-
-
             <CustomButton title="Đăng ký" type="primary" onPress={handleRegister} />
             <View style={styles.linkLogin}>
                 <Text style={{fontSize: 15}}>Đã có tài khoản?</Text>
@@ -114,7 +119,15 @@ const styles = StyleSheet.create({
     checkbox: {
         borderRadius: 3,
         borderColor: Colors.light_500
-    }
+    },
+    termTextGroup: { 
+        flexDirection: 'row',
+        alignItems: 'flex-end',
+        gap: 5
+    },
+    termText: { 
+        fontSize: 15,
+    },
 });
 
 export default RegisterScreen;

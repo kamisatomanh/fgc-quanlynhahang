@@ -6,6 +6,8 @@ import LoginScreen from '../screens/LoginScreen';
 import RegisterScreen from '../screens/RegisterScreen';
 import ForgotPassword from '../screens/ForgotPasswordScreen';
 import Verification from '../screens/VerificationScreen';
+import ResetPassword from '../screens/ResetPasswordScreen';
+import TermsAndConditions from '../screens/TermsAndConditionsScreen';
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
@@ -16,7 +18,9 @@ const AppNavigator = () => {
         <Stack.Screen name="Login" component={LoginScreen} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="Verification" component={Verification} />
+        <Stack.Screen name="ResetPassword" component={ResetPassword} />
         <Stack.Screen name="Register" component={RegisterScreen} />
+        <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
       </Stack.Navigator>
     </NavigationContainer>
   );

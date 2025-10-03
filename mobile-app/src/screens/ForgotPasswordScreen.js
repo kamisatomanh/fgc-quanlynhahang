@@ -33,7 +33,7 @@ const ForgotPassword = () => {
                     placeholder="Nhập địa chỉ email"
                 />
                 <CustomButton 
-                    title="Xác nhận" 
+                    title="Tiếp tục" 
                     type="primary"
                     onPress={() => navigation.navigate("Verification")}
                 />
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontWeight: 'bold',
-        width: 250,
     },
     subtitle: {
         color: Colors.gray_500,

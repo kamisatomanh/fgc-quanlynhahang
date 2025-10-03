@@ -20,6 +20,7 @@ const styles = StyleSheet.create({
         borderRadius: 10,
         alignItems: "center",
         marginTop: 40,
+        width: '100%'
     },
 
     primary: {
