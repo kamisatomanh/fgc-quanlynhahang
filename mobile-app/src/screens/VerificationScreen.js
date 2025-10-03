@@ -4,8 +4,14 @@ import Colors from "../constants/colors";
 import CustomInput from "../components/CustomInput";
 import CustomButton from "../components/CustomButton";
 import { useNavigation } from "@react-navigation/native";
+import VerificationInput from "../components/VerificationInput";
 const Verification = () => {
     const navigation = useNavigation();
+    const handleCodeChange = (code) => {
+        if (code.length === 4) {
+
+        }
+    }
     return (
         <View style={styles.container}>
             <TouchableOpacity onPress={() => navigation.goBack()}>
@@ -28,13 +34,14 @@ const Verification = () => {
                     source={require("../../assets/images/verification-image.png")}
                     resizeMode="contain"
                 />
-                <CustomInput 
-                    label="Email"
-                    placeholder="Nhập địa chỉ email"
+                <VerificationInput
+                    length={4}
+                    onChange={handleCodeChange}
                 />
                 <CustomButton 
                     title="Xác nhận" 
-                    type="primary" 
+                    type="primary"
+                    onPress={() => navigation.navigate("ResetPassword")}
                 />
             </View>
         </View>
@@ -64,7 +71,6 @@ const styles = StyleSheet.create({
     title: {
         fontSize: 30,
         fontWeight: 'bold',
-        width: 250,
     },
     subtitle: {
         color: Colors.gray_500,

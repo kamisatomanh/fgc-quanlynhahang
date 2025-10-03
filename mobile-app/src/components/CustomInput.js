@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
     },
     label: {
         fontSize: 12,
-        color: Colors.gray_500,
+        color: Colors.dark_500,
         marginBottom: 5,
     },
     labelActive: {
