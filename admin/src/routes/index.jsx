@@ -1,4 +1,5 @@
 import Main from "../components/layouts/Main";
+import { AddStaff } from "../components/staffs/AddStaff";
 import Staffs from "../components/staffs/Staffs";
 import Dashboard from "../pages/Dashboard/Dashboard";
 import Login from "../pages/Login/Login";
@@ -11,6 +12,7 @@ const routes = [
     children: [
       { index: true, element: <Dashboard /> }, // mặc định load Dashboard
       { path: "/staffs", element: <Staffs /> },
+      { path: "/staffs/add-staff", element: <AddStaff /> },
       //   { path: "orders", element: <Orders /> },
       //   { path: "settings", element: <Settings /> },
     ],

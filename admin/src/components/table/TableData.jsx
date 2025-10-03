@@ -1,12 +1,18 @@
 import React from "react";
-import { Container, Table } from "react-bootstrap";
+import { Button, Container, Table } from "react-bootstrap";
 
-const TableData = ({ data }) => {
-  console.log(data);
+
+const TableData = ({ data, navigate }) => {
+
 
   return (
     <Container className="mt-4">
       <h4 className="mb-3">Danh sách nhân sự</h4>
+      <Button onClick={navigate} className="mb-3" variant="primary">
+        {" "}
+        Thêm nhân sự
+      </Button>
+
       <Table striped bordered hover responsive>
         <thead>
           <tr>

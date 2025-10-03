@@ -1,7 +1,13 @@
 import React from "react";
 import TableData from "../table/TableData";
+import { useNavigate } from "react-router-dom";
 
 const Staffs = () => {
+  const navigate = useNavigate();
+
+  const handleAddStaff = () => {
+    navigate("/staffs/add-staff");
+  }
   const data = [
     {
       id: 1,
@@ -21,7 +27,7 @@ const Staffs = () => {
   ];
   return (
     <>
-      <TableData data={data} />
+      <TableData navigate={handleAddStaff} data={data} />
     </>
   );
 };
