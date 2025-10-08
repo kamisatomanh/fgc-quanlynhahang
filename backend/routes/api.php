@@ -4,31 +4,15 @@ use Illuminate\Support\Facades\Route;
 use Kreait\Firebase\Factory;
 use App\Http\Controllers\UserController;
 
-Route::get('/csrf-token', function () {
-    return response()->json(['csrf_token' => csrf_token()]);
-});
 
-Route::prefix('api/users')->group(function () {
+
+Route::prefix('users')->group(function () {
     Route::get('/', [UserController::class, 'index']);       
     Route::post('/', [UserController::class, 'store']);       
     Route::get('{id}', [UserController::class, 'show']);      
     Route::put('{id}', [UserController::class, 'update']);    
     Route::delete('{id}', [UserController::class, 'destroy']); 
 });
-
-
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/check-env', function () {
-    return [
-        'credentials' => env('FIREBASE_CREDENTIALS'),
-        'database_url' => env('FIREBASE_DATABASE_URL'),
-        'base_path' => base_path(),
-    ];
-});
-
 
 Route::get('/test-firebase', function () {
     $factory = (new Factory)
