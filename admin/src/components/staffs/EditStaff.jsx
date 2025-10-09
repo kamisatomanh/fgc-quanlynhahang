@@ -1,15 +1,18 @@
 import React from "react";
-import { Button, Card, Col, Container, Form, Row } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Button, Card, Col, Form, Row } from "react-bootstrap";
+import { Link, useParams } from "react-router-dom";
 
-export const AddStaff = () => {
+const EditStaff = () => {
+  const { id } = useParams();
+  console.log("EditStaff component rendered"); // Debugging line to check rendering
+
   return (
     <Row className="justify-content-center">
       <Col xs={12} md={10} lg={8}>
         {" "}
         {/* rộng hơn: chiếm 10/12 trên md và 8/12 trên lg */}
         <Card className="p-4 shadow-sm">
-          <h3 className="text-center mb-4">Thêm nhân sự</h3>
+          <h3 className="text-center mb-4">Sửa nhân sự {id}</h3>
           <Form>
             <Row>
               <Col md={6}>
@@ -61,7 +64,7 @@ export const AddStaff = () => {
 
             <div className="d-grid">
               <Button type="submit" variant="primary" size="lg">
-                Thêm nhân sự
+                Sửa nhân sự
               </Button>
             </div>
 
@@ -77,3 +80,5 @@ export const AddStaff = () => {
     </Row>
   );
 };
+
+export default EditStaff;
