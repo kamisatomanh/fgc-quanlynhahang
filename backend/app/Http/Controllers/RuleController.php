@@ -24,7 +24,12 @@ class RuleController extends Controller
      */
     public function index()
     {
-        $rules = array_values($this->database->getReference('rules')->getValue());
+        $rulesData = array_values($this->database->getReference('rules')->getValue());
+        $rules = [];
+        foreach ($rulesData as $key => $value) {
+            $value['id'] = $key;
+            $rules[] = $value;
+        }
         return response()->json($rules);
     }
 
