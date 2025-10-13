@@ -24,12 +24,14 @@ class EmployeeLeaveController extends Controller
      */
     public function index()
     {
-        $leaves = $this->database->getReference('employee_leaves')->getValue();
+        $leavesData = $this->database->getReference('employee_leaves')->getValue();
         $users = $this->database->getReference('users')->getValue();
-
-        foreach ($leaves as $key => &$leave) {
+        $leaves = [];
+        foreach ($leavesData as $key => &$leave) {
+            $leave['id'] = $key;
             $userId = $leave['user_id'];
             $leave['user_name'] = $users[$userId]['full_name'];
+            $leaves[] = $leave;
         }
 
         return response()->json(array_values($leaves));
