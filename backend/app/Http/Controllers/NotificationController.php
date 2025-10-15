@@ -23,15 +23,18 @@ class NotificationController extends Controller
      */
     public function index()
     {
-        $notifications = $this->database->getReference('notifications')->getValue();
+        $notificationsData = $this->database->getReference('notifications')->getValue();
         $users = $this->database->getReference('users')->getValue();
-
-        foreach ($notifications as $key => &$noti) {
+        $notifications = [];
+        
+        foreach ($notificationsData as $key => &$noti) {
+            $noti['id'] = $key;
             if (!empty($noti['user_id'])) {
                 $noti['user_name'] = $users[$noti['user_id']]['full_name'];
             } else {
                 $noti['user_name'] = 'Tất cả người dùng';
             }
+            $notifications[] = $noti;
         }
 
         return response()->json($notifications);
