@@ -24,7 +24,7 @@ class ShiftController extends Controller
      */
     public function index()
     {
-        $shiftData = array_values($this->database->getReference('shifts')->getValue());
+        $shiftData = $this->database->getReference('shifts')->getValue();
         $shift = [];
         foreach ($shiftData as $key => $value) {
             $value['id'] = $key;

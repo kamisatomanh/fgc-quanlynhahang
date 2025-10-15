@@ -34,7 +34,7 @@ class EmployeeLeaveController extends Controller
             $leaves[] = $leave;
         }
 
-        return response()->json(array_values($leaves));
+        return response()->json($leaves);
     }
 
     /**

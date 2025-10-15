@@ -25,7 +25,7 @@ class UserController extends Controller
 
     public function index()
     {
-        $usersData = array_values($this->database->getReference('users')->getValue());
+        $usersData = $this->database->getReference('users')->getValue();
         $users = [];
         foreach ($usersData as $key => $value) {
             $value['id'] = $key;

@@ -21,7 +21,7 @@ class ShiftExceptionController extends Controller
      */
     public function index()
     {
-        $shiftsExData = array_values($this->database->getReference('shifts_exeptions')->getValue());
+        $shiftsExData = $this->database->getReference('shifts_exeptions')->getValue();
         $shiftsEx = [];
         foreach ($shiftsExData as $key => $value) {
             $value['id'] = $key;
