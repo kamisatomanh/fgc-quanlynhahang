@@ -8,6 +8,7 @@ import ForgotPassword from '../screens/ForgotPasswordScreen';
 import Verification from '../screens/VerificationScreen';
 import ResetPassword from '../screens/ResetPasswordScreen';
 import TermsAndConditions from '../screens/TermsAndConditionsScreen';
+import HomePage from '../screens/HomePageScreen';
 const Stack = createStackNavigator();
 
 const AppNavigator = () => {
@@ -21,6 +22,7 @@ const AppNavigator = () => {
         <Stack.Screen name="ResetPassword" component={ResetPassword} />
         <Stack.Screen name="Register" component={RegisterScreen} />
         <Stack.Screen name="TermsAndConditions" component={TermsAndConditions} />
+        <Stack.Screen name="HomePage" component={HomePage} />
       </Stack.Navigator>
     </NavigationContainer>
   );
