@@ -36,7 +36,7 @@ class AttendanceController extends Controller
             $attendance['leave_title'] = isset($attendance['leave_id']) ? ($leaves[$attendance['leave_id']]['title'] ?? 'Không xác định') : null;
         }
 
-        return response()->json(array_values($attendances));
+        return response()->json($attendances);
     }
 
     /**
