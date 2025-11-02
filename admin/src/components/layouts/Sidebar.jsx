@@ -37,11 +37,7 @@ const Sidebar = ({
         </div>
         <h4 className="text-center mb-4">Quản lý nhà hàng</h4>
         <ListGroup variant="flush">
-          <ListGroup.Item
-            action
-            href="/"
-            className="bg-dark text-white"
-          >
+          <ListGroup.Item action href="/" className="bg-dark text-white">
             <FaTachometerAlt className="me-2" />
             Dashboard
           </ListGroup.Item>
@@ -49,6 +45,15 @@ const Sidebar = ({
           <ListGroup.Item action href="/staffs" className="bg-dark text-white">
             <FaUsers className="me-2" />
             Quản lý nhân viên
+          </ListGroup.Item>
+
+          <ListGroup.Item
+            action
+            href="/shifts"
+            className="bg-dark text-white"
+          >
+            <FaCalendarCheck className="me-2" />
+            Ca làm việc
           </ListGroup.Item>
 
           <ListGroup.Item

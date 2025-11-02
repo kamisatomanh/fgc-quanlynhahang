@@ -1,52 +1,51 @@
 import React, { useState } from "react";
-
+import { useShifts } from "../../hooks/useShifts";
 import { useNavigate } from "react-router-dom";
 import { Button, Container, Modal, Table } from "react-bootstrap";
-import { useUsers } from "../../hooks/useUsers";
 
-const Staffs = () => {
-  const navigate = useNavigate();
+const Shifts = () => {
+  const { shifts, loading, error, deleteShift } = useShifts();
+
   const [showModal, setShowModal] = useState(false);
-  const [selectedUserId, setSelectedUserId] = useState(null);
-  const { users, loading, error, deleteUser } = useUsers();
+
+  const [selectedShiftId, setSelectedShiftId] = useState(null);
+  const navigate = useNavigate();
 
   const handleShowModal = (id) => {
-    setSelectedUserId(id);
+    setSelectedShiftId(id);
     setShowModal(true);
   };
 
-  // Hàm xác nhận xóa
   const handleConfirmDelete = async () => {
-    if (selectedUserId) {
-      await deleteUser(selectedUserId);
+    if (selectedShiftId) {
+      await deleteShift(selectedShiftId);
       setShowModal(false);
-      setSelectedUserId(null);
+      selectedShiftId(null);
     }
   };
 
-  console.log(users, loading, error);
-
-  if (error) return <p>Error: {error.message}</p>;
+  console.log(shifts, loading, error);
 
   return (
     <Container className="mt-4">
-      <h4 className="mb-3">Danh sách nhân sự</h4>
+      <h4 className="mb-3">Danh sách ca làm việc</h4>
       <Button
-        onClick={() => navigate("/staffs/add-staff")}
+        onClick={() => navigate("/shifts/add-shift")}
         className="mb-3"
         variant="primary"
       >
-        Thêm nhân sự
+        Thêm ca làm việc
       </Button>
 
       <Table striped bordered hover responsive>
         <thead>
           <tr>
-            <th>Họ tên</th>
-            <th>Chức vụ</th>
-            <th>Tên ngân hàng</th>
-            <th>Số tài khoản</th>
-            <th>Số điện thoại</th>
+            <th>Mã ca làm</th>
+            <th>Ca làm</th>
+            <th>Hiệu lực bắt đầu</th>
+            <th>Hiệu lục kết thúc</th>
+            <th>Thời gian bắt đầu</th>
+            <th>Thời gian kết thúc</th>
             <th>Hành động</th>
           </tr>
         </thead>
@@ -63,33 +62,29 @@ const Staffs = () => {
           </tbody>
         ) : (
           <tbody>
-            {users.map((item) => (
+            {shifts.map((item) => (
               <tr key={item.id}>
-                <td>{item.full_name}</td>
-                <td>{item.role}</td>
-                <td>{item.bank_name}</td>
-                <td>{item.bank_number}</td>
-                <td>{item.phone_number}</td>
+                <td>{item.id}</td>
+                <td>{item.shift_name}</td>
+                <td>{item.effective_from}</td>
+                <td>{item.effective_to}</td>
+                <td>{item.start_time}</td>
+                <td>{item.end_time}</td>
                 <td>
                   <button
-                    onClick={() => navigate(`/staffs/edit-staff/${item.id}`)}
+                    onClick={() => navigate(`/shifts/edit-shift/${item.id}`)}
                     className="btn btn-warning text-white me-2"
                   >
                     Sửa
                   </button>
-                  {item.role === "admin" ? (
-                    <Button disabled variant="danger" size="sm">
-                      Xóa
-                    </Button>
-                  ) : (
-                    <Button
-                      onClick={() => handleShowModal(item.id)} // ✅ truyền id vào đây
-                      variant="danger"
-                      size="sm"
-                    >
-                      Xóa
-                    </Button>
-                  )}
+
+                  <Button
+                    onClick={() => handleShowModal(item.id)} // ✅ truyền id vào đây
+                    variant="danger"
+                    size="sm"
+                  >
+                    Xóa
+                  </Button>
                 </td>
               </tr>
             ))}
@@ -102,7 +97,7 @@ const Staffs = () => {
         <Modal.Header closeButton>
           <Modal.Title>Xác nhận xóa</Modal.Title>
         </Modal.Header>
-        <Modal.Body>Bạn có chắc chắn muốn xóa nhân viên này không?</Modal.Body>
+        <Modal.Body>Bạn có chắc chắn muốn xóa ca làm này không?</Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={() => setShowModal(false)}>
             Hủy
@@ -116,4 +111,4 @@ const Staffs = () => {
   );
 };
 
-export default Staffs;
+export default Shifts;
