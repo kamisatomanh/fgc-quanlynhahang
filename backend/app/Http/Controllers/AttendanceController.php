@@ -36,7 +36,9 @@ class AttendanceController extends Controller
             $attendance['leave_title'] = isset($attendance['leave_id']) ? ($leaves[$attendance['leave_id']]['title'] ?? 'Không xác định') : null;
         }
 
-        return response()->json($attendances);
+        $attendancesArray = array_values($attendances);
+
+        return response()->json($attendancesArray);
     }
 
     /**
@@ -64,8 +66,14 @@ class AttendanceController extends Controller
         $attendance['user'] = $user;
         $attendance['shift'] = $shift;
         $attendance['leave'] = $leave;
+        $attendanceWithKey = [
+            [
+                'id' => $id,
+                'data' => $attendance
+            ]
+        ];
 
-        return response()->json($attendance);
+        return response()->json([$attendanceWithKey]);
     }
 
     /**
